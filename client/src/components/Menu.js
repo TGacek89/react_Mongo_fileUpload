@@ -5,6 +5,7 @@ import WeekendRoundedIcon from "@mui/icons-material/WeekendRounded";
 import CameraEnhanceRoundedIcon from "@mui/icons-material/CameraEnhanceRounded";
 import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -52,10 +53,12 @@ const Menu = ({ darkMode, setDarkMode }) => {
         <Logo>
           <Img src={Ebay} />
         </Logo>
-        <Item>
-          <WeekendRoundedIcon />
-          Home
-        </Item>
+        <Link to="/">
+          <Item>
+            <WeekendRoundedIcon />
+            Home
+          </Item>
+        </Link>
         <Item>
           <CameraEnhanceRoundedIcon />
           Products

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: sticky;
+  z-index: 1;
   top: 0;
   background-color: none;
   height: 56px;
