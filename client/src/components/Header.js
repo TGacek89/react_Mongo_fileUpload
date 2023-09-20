@@ -8,6 +8,7 @@ const Container = styled.div`
   font-size: 14px;
   z-index: 0;
   top: 0;
+  margin-left: 8px;
 `;
 
 const Img = styled.img`

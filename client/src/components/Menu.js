@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Ebay from "../img/x.png";
-import WeekendRoundedIcon from "@mui/icons-material/WeekendRounded";
-import CameraEnhanceRoundedIcon from "@mui/icons-material/CameraEnhanceRounded";
-import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
-import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import WeekendOutlinedIcon from "@mui/icons-material/WeekendOutlined";
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
+import Brightness6OutlinedIcon from "@mui/icons-material/Brightness6Outlined";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
@@ -53,23 +53,24 @@ const Menu = ({ darkMode, setDarkMode }) => {
         <Logo>
           <Img src={Ebay} />
         </Logo>
-        <Link to="/">
+        <Link to="/" className="link">
           <Item>
-            <WeekendRoundedIcon />
+            <WeekendOutlinedIcon />
             Home
           </Item>
         </Link>
         <Item>
-          <CameraEnhanceRoundedIcon />
+          <AddOutlinedIcon />
           Products
         </Item>
-        <Hr />
+
         <Item>
-          <AttachMoneyRoundedIcon />
+          <PaidOutlinedIcon />
           Profits
         </Item>
+        <Hr />
         <Item onClick={() => setDarkMode(!darkMode)}>
-          <SettingsBrightnessOutlinedIcon />
+          <Brightness6OutlinedIcon />
           {darkMode ? "Light" : "Dark"} Mode
         </Item>
       </Wrapper>

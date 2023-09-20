@@ -10,12 +10,14 @@ import Header from "./components/Header";
 import Get from "./components/Get";
 import Create from "./components/Create";
 import "./App.css";
+import Detail from "./components/Detail";
+import Edit from "./components/Edit";
 
 const Container = styled.div`
   display: flex;
 `;
 const Main = styled.div`
-  flex: 4;
+  flex: 6;
   background-color: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text};
 `;
@@ -29,12 +31,11 @@ function App() {
         <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
         <Main>
           <Wrapper>
-            <Navbar />
-            <Header />
-            <Add />
             <Routes>
               <Route path="/" element={<Get />} />
+              <Route path="/:id" element={<Detail />} />
               <Route path="/create" element={<Create />} />
+              <Route path="/edit/:id" element={<Edit />} />
             </Routes>
           </Wrapper>
         </Main>

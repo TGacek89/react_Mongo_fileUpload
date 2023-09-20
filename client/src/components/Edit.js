@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Container = styled.div`
   position: relative;
@@ -56,27 +56,24 @@ const Button = styled.button`
   }
 `;
 
-const Create = () => {
+const Edit = () => {
   const [product, setProduct] = useState({
-    name: "",
+    title: "",
     description: "",
     buyPrice: "",
     estimatedSellPrice: "",
     sellPrice: "",
-    profit: "", // Initialize profit as an empty string
-    photo: "",
+    profit: "",
+    pfoto: "",
   });
-
+  const params = useParams();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProduct((prev) => ({ ...prev, [name]: value }));
+    setProduct((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   useEffect(() => {
-    // Calculate profit whenever buyPrice or sellPrice changes
-
     const buyPrice = parseFloat(product.buyPrice);
     const sellPrice = parseFloat(product.sellPrice);
 
@@ -87,10 +84,10 @@ const Create = () => {
     }
   }, [product.buyPrice, product.sellPrice]);
 
-  const handleSend = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8880/add_product", product);
+      await axios.put(`http://localhost:8880/products/${params.id}`, product);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -135,7 +132,7 @@ const Create = () => {
           <Input
             type="number"
             placeholder="profit"
-            value={product.profit} // Display the calculated profit
+            value={product.profit}
             readOnly
           />
           <Input
@@ -144,7 +141,7 @@ const Create = () => {
             onChange={handleChange}
             name="photo"
           />
-          <Button className="addBook" onClick={handleSend}>
+          <Button className="addBook" onClick={handleUpdate}>
             ADD
           </Button>
         </Form>
@@ -153,4 +150,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default Edit;
